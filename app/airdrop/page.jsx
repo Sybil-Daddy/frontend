@@ -17,22 +17,25 @@ const Airdrop = () => {
   const [checkbox2Checked, setCheckbox2Checked] = useState(false);
   const [checkbox3Checked, setCheckbox3Checked] = useState(false);
   const [result, setResult] = useState([]);
- 
+
   const handleAnalyzeClick = async () => {
-    console.log("here: ",(() => {
-      return csvData.map(e => ({
-        fid: e.addressOrFid,
-        airdropInitialScore: Number(e.airdropInitialScore)
-        }))
-    })())
+    console.log(
+      "here: ",
+      (() => {
+        return csvData.map((e) => ({
+          fid: e.addressOrFid,
+          airdropInitialScore: Number(e.airdropInitialScore),
+        }));
+      })()
+    );
     try {
       const requestBody = {
         data: {
           data: (() => {
-            return csvData.map(e => ({
+            return csvData.map((e) => ({
               fid: e.addressOrFid,
-              airdropInitialScore: Number(e.airdropInitialScore)
-              }))
+              airdropInitialScore: Number(e.airdropInitialScore),
+            }));
           })(),
         },
         social: {
@@ -43,11 +46,14 @@ const Airdrop = () => {
         },
       };
       console.log(requestBody, "requestBody");
-  
-      const response = await axios.post("http://localhost:8000/getanalysis", requestBody);
-  
+
+      const response = await axios.post(
+        "http://localhost:8000/getanalysis",
+        requestBody
+      );
+
       console.log("Analysis data:", response.data);
-      setResult(response)
+      setResult(response.data);
     } catch (error) {
       console.error("Error fetching analysis data:", error.message);
     }
@@ -151,8 +157,11 @@ const Airdrop = () => {
                     </thead>
                     <tbody>
                       {csvData.slice(0, 3).map((e) => {
+                        // eslint-disable-next-line no-undef
                         return (
-                          <tr key={e.addressOrFid} class="text-black font-semibold text-sm">
+                          <tr
+                            class="text-black font-semibold text-sm"
+                          >
                             <th
                               scope="row"
                               class="px-6 py-4 font-semibold whitespace-nowrap border border-solid border-black"
@@ -170,7 +179,57 @@ const Airdrop = () => {
                 </div>
               </div>
             )}
+
+            {result?.data?.length > 0 && (
+              <div>
+                <h2 className="text-xl mt-4 Logo opacity-80 text-white font-bold font-SpaceGrotesk">
+                  CSV Data
+                </h2>
+
+                <div class="relative overflow-x-auto">
+                  <table class="w-full text-sm text-left rtl:text-right ">
+                    <thead class="text-sm text-black font-semibold">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border border-solid border-black"
+                        >
+                          AmountOrFid
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border border-solid border-black"
+                        >
+                          Score
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {result?.data?.slice(0, 3).map((e) => {
+                        return (
+                          <tr
+                            key={e.fid}
+                            class="text-black font-semibold text-sm"
+                          >
+                            <th
+                              scope="row"
+                              class="px-6 py-4 font-semibold whitespace-nowrap border border-solid border-black"
+                            >
+                              {e.fid}
+                            </th>
+                            <td class="px-6 py-4 border border-solid border-black">
+                              {e.airdropInitialScore}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
           </div>
+
           <div className="w-[50rem] text-left font-bold text-2xl mt-20">
             2.) Select Analysis Methods
           </div>
