@@ -4,12 +4,7 @@ import CSVReader from "react-csv-reader";
 import Link from "next/link";
 import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import { abi as HubABI } from "../../abi/AirdropHub";
-import {
-  erc20ABI,
-  useContractRead,
-  useContractWrite,
-  usePrepareContractWrite,
-} from "wagmi";
+import { erc20ABI, useContractRead, useContractWrite } from "wagmi";
 import { BigNumber } from "ethers";
 
 const Airdrop = () => {
@@ -21,6 +16,7 @@ const Airdrop = () => {
   const [checkbox2Checked, setCheckbox2Checked] = useState(false);
   const [checkbox3Checked, setCheckbox3Checked] = useState(false);
 
+  console.log("set csv data:", csvData);
   const { write: writeCreateNewAirdrop } = useContractWrite({
     address: hubContractAddress, //HubContract address
     abi: HubABI,
@@ -90,31 +86,51 @@ const Airdrop = () => {
               onFileLoaded={handleCsvUpload}
               parserOptions={{ header: true }}
             />
-            {/* {csvData.length > 0 && (
-            <div>
-              <h2 className="text-xl mt-4 Logo opacity-80 text-black font-normal font-SpaceGrotesk">
-                CSV Data
-              </h2>
-              <table className="mt-2">
-                <thead>
-                  <tr>
-                    {Object.keys(csvData[0]).map((key) => (
-                      <th key={key}>{key}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {csvData.map((row, index) => (
-                    <tr key={index}>
-                      {Object.values(row).map((value, index) => (
-                        <td key={index}>{value}</td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )} */}
+            {csvData.length > 0 && (
+              <div>
+                <h2 className="text-xl mt-4 Logo opacity-80 text-white font-bold font-SpaceGrotesk">
+                  CSV Data
+                </h2>
+
+                <div class="relative overflow-x-auto">
+                  <table class="w-full text-sm text-left rtl:text-right ">
+                    <thead class="text-sm text-black font-semibold">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border border-solid border-black"
+                        >
+                          AmountOrFid
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 border border-solid border-black"
+                        >
+                          Score
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {csvData.slice(0, 3).map((e) => {
+                        return (
+                          <tr class="text-black font-semibold text-sm">
+                            <th
+                              scope="row"
+                              class="px-6 py-4 font-semibold whitespace-nowrap border border-solid border-black"
+                            >
+                              {e.addressOrFid}
+                            </th>
+                            <td class="px-6 py-4 border border-solid border-black">
+                              {e.airdropInitialScore}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
           </div>
           <div className="w-[50rem] text-left font-bold text-2xl mt-20">
             2.) Select Analysis Methods
@@ -187,6 +203,7 @@ const Airdrop = () => {
               </div>
               <input
                 type="text"
+                placeholder="0x"
                 value={airdropTokenAddress}
                 onChange={(e) => {
                   setAirdropTokenAddress(e.target.value);
