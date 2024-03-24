@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import CSVReader from "react-csv-reader";
 import Link from "next/link";
+import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 
 const Airdrop = () => {
   const [csvData, setCsvData] = useState([]);
@@ -27,17 +28,16 @@ const Airdrop = () => {
   return (
     <>
       <div className="Hero relative min-h-screen applyBG pb-[6rem]">
-        <div className="HeroText text-white text-center max-w-[60rem] m-auto pt-[8rem]">
-          <div className="Header ml-8 w-[1184px] pt-16  h-14 ">
-            <div className="Logo w-[175px]  h-14 left-28 top-0 absolute justify-center items-center inline-flex">
-              <Link
-                href="/"
-                className="Logo opacity-80 mt-8 text-2xl ml-5 sm:font-medium text-white  font-normal font-SpaceGrotesk "
-              >
-                Sybil Daddy
-              </Link>
-            </div>
-          </div>
+        <div className="px-20 py-12 justify-between items-center flex">
+          <Link
+            href="/"
+            className="text-2xl sm:font-medium text-white  font-normal font-SpaceGrotesk "
+          >
+            Sybil Daddy
+          </Link>
+          <DynamicWidget />
+        </div>
+        <div className="text-white text-center max-w-[60rem] m-auto pt-[7rem]">
           <div className="w-[50rem] text-left font-bold text-2xl">
             1.) Upload Addresses and FID for Airdrop
           </div>

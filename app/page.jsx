@@ -1,6 +1,6 @@
+"use client";
 import Header from "@/components/Header/page";
 import Link from "next/link";
-
 import { Novatrix } from "uvcanvas";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
       <div className="Hero w-screen h-screen relative">
         <div className="HeroText z-[20] absolute inset-0 flex flex-col justify-center items-center text-white text-center">
           <Header />
-          <p className="max-w-[1077px] opacity-80 font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl [line-height:1.2!important] font-ClashGrotesk tracking-wide">
+          <p className="max-w-[1077px] opacity-80 font-bold text-gray-900 text-4xl md:text-5xl lg:text-6xl [line-height:1.2!important] font-ClashGrotesk tracking-wide">
             Power Hyper Sybil Resistant Airdrops, right to social feeds of your
             users.
           </p>
