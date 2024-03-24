@@ -3,12 +3,54 @@ import React, { useState } from "react";
 import CSVReader from "react-csv-reader";
 import Link from "next/link";
 import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
+import { abi as HubABI } from "../../abi/AirdropHub";
+import {
+  erc20ABI,
+  useContractRead,
+  useContractWrite,
+  usePrepareContractWrite,
+} from "wagmi";
+import { BigNumber } from "ethers";
 
 const Airdrop = () => {
+  const hubContractAddress = "0xEa874C114D6C0C047655b0F1A2cdE04856E3CDB4";
   const [csvData, setCsvData] = useState([]);
+  const [airdropTokenAddress, setAirdropTokenAddress] = useState("");
+  const [amountToAirdrop, setAmountToAirdrop] = useState(0);
   const [checkbox1Checked, setCheckbox1Checked] = useState(false);
   const [checkbox2Checked, setCheckbox2Checked] = useState(false);
   const [checkbox3Checked, setCheckbox3Checked] = useState(false);
+
+  const { write: writeCreateNewAirdrop } = useContractWrite({
+    address: hubContractAddress, //HubContract address
+    abi: HubABI,
+    functionName: "createNewAirdrop",
+    args: [
+      airdropTokenAddress,
+      ["0xD02345816076267d3Abd3CcaB1168Df41C985853"],
+      [100n],
+      [],
+      [],
+    ],
+  });
+
+  const { data: tokenDecimals } = useContractRead({
+    address: airdropTokenAddress, //HubContract address
+    abi: erc20ABI,
+    functionName: "decimals",
+  });
+
+  const { write: approveTokenForAirdrop } = useContractWrite({
+    address: airdropTokenAddress, //HubContract address
+    abi: erc20ABI,
+    functionName: "approve",
+    args: [
+      hubContractAddress,
+      BigNumber.from(amountToAirdrop ? amountToAirdrop.toString() : 0)
+        .mul(tokenDecimals ? BigNumber.from(10).pow(tokenDecimals) : 0)
+        .toBigInt(),
+    ],
+  });
 
   const handleCsvUpload = (data) => {
     setCsvData(data);
@@ -39,7 +81,7 @@ const Airdrop = () => {
         </div>
         <div className="text-white text-center max-w-[60rem] m-auto pt-[7rem]">
           <div className="w-[50rem] text-left font-bold text-2xl">
-            1.) Upload Addresses and FID for Airdrop
+            1.) Upload Addresses or FIDs for Airdrop
           </div>
           <div className="mt-10 text-left pl-20">
             <CSVReader
@@ -145,6 +187,10 @@ const Airdrop = () => {
               </div>
               <input
                 type="text"
+                value={airdropTokenAddress}
+                onChange={(e) => {
+                  setAirdropTokenAddress(e.target.value);
+                }}
                 className="bg-gray-50 w-[30rem] border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                 required
               />
@@ -155,12 +201,24 @@ const Airdrop = () => {
               </div>
               <input
                 type="number"
+                value={amountToAirdrop}
+                onChange={(e) => {
+                  setAmountToAirdrop(Number(e.target.value));
+                }}
                 className="bg-gray-50 w-[30rem] border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                 required
               />
             </div>
           </div>
-          <button className="Cta mt-20 px-5 py-2 w-[15rem] justify-center bg-blue-700 rounded-lg border-2 border-blue-700 flex items-start gap-2.5">
+          <button
+            onClick={() => {
+              approveTokenForAirdrop();
+              setTimeout(() => {
+                writeCreateNewAirdrop();
+              }, [1000]);
+            }}
+            className="Cta mt-20 px-5 py-2 w-[15rem] justify-center bg-blue-700 rounded-lg border-2 border-blue-700 flex items-start gap-2.5"
+          >
             <p className="text-xl font-SpaceGrotesk text-white font-semibold">
               Start Airdrop
             </p>
