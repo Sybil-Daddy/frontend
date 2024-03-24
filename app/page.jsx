@@ -38,12 +38,12 @@ export default function Home() {
               <div className="feature-icon mb-4 rounded-full bg-black w-16 h-16">
                 <img src="https://raw.githubusercontent.com/AllenAJ/imgs/main/Mask%20group.png"></img>
               </div>
-              <h3 className="text-black font-semibold mb-3">
-                Airdrop to Web2 Users
-              </h3>
+              <h3 className="text-black font-semibold mb-3">Karma labs</h3>
               <p className="text-gray-600 text-center mb-4">
-                This is the description of the first feature of our app. We are
-                going to briefly outline what this feature does.
+                We go through the airdrop eligible addresses and use their
+                social graphs engagements on their profiles, recasts, likes &
+                also the quality of their followers to rank them powered by
+                Karma3Labs
               </p>
               {/* <button className="mt-auto bg-black text-white px-6 py-2 rounded-full">Button Label</button> */}
             </div>
@@ -56,8 +56,7 @@ export default function Home() {
                 Use Social Analysis
               </h3>
               <p className="text-gray-600 text-center mb-4">
-                This is the description of the second feature of our app. We are
-                going to briefly outline what this feature does.
+              For each user we analyze their content using a classification AI model to determine how many of them are probably bots and how many of them are human generated. This also attaches a score to each airdrop address
               </p>
               {/* <button className="mt-auto bg-black text-white px-6 py-2 rounded-full">Button Label</button> */}
             </div>
