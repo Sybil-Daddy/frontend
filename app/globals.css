@@ -60,6 +60,14 @@ body {
   cursor: pointer !important;
 }
 
+canvas {
+  opacity: 0.9;
+}
+
+.applyBG {
+  background: url("/assets/hero.png");
+}
+
 @keyframes flicker {
   0% {
     border: 2px solid rgb(1, 235, 252);

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import CSVReader from "react-csv-reader";
-import Header from "@/components/Header/page";
+import Link from "next/link";
 
 const Airdrop = () => {
   const [csvData, setCsvData] = useState([]);
@@ -26,43 +26,29 @@ const Airdrop = () => {
 
   return (
     <>
-      <div className="Hero w-screen h-screen relative">
-        <div className="HeroText absolute inset-0 flex flex-col justify-center items-center text-white text-center">
-          <Header />
-
-          <div className="input-div">
+      <div className="Hero relative min-h-screen applyBG pb-[6rem]">
+        <div className="HeroText text-white text-center max-w-[60rem] m-auto pt-[8rem]">
+          <div className="Header ml-8 w-[1184px] pt-16  h-14 ">
+            <div className="Logo w-[175px]  h-14 left-28 top-0 absolute justify-center items-center inline-flex">
+              <Link
+                href="/"
+                className="Logo opacity-80 mt-8 text-2xl ml-5 sm:font-medium text-white  font-normal font-SpaceGrotesk "
+              >
+                Sybil Daddy
+              </Link>
+            </div>
+          </div>
+          <div className="w-[50rem] text-left font-bold text-2xl">
+            1.) Upload Addresses and FID for Airdrop
+          </div>
+          <div className="mt-10 text-left pl-20">
             <CSVReader
               label="upload"
               cssClass="csv-reader-input"
               onFileLoaded={handleCsvUpload}
               parserOptions={{ header: true }}
             />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              fill="none"
-              stroke="currentColor"
-              className="icon"
-            >
-              <polyline points="16 16 12 12 8 16"></polyline>
-              <line y2="21" x2="12" y1="12" x1="12"></line>
-              <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
-              <polyline points="16 16 12 12 8 16"></polyline>
-            </svg>
-          </div>
-
-          <div>
-            <h2 className="text-xl mt-4 Logo opacity-80 text-black font-normal font-SpaceGrotesk">
-              {/* Uplo/ad CSV */}
-            </h2>
-          </div>
-
-          {csvData.length > 0 && (
+            {/* {csvData.length > 0 && (
             <div>
               <h2 className="text-xl mt-4 Logo opacity-80 text-black font-normal font-SpaceGrotesk">
                 CSV Data
@@ -86,55 +72,15 @@ const Airdrop = () => {
                 </tbody>
               </table>
             </div>
-          )}
-
-          {/* <div className="">
-            <label className="container">
-              <input
-                checked={checkbox1Checked}
-                onChange={handleCheckbox1Change}
-                type="checkbox"
-              />
-              <div class="checkmark"></div>
-            </label>
-
-            <label className="container">
-              <span>Karma API</span>
-            </label>
+          )} */}
           </div>
-          <div className="">
-            <label className="container">
-              <input
-                checked={checkbox2Checked}
-                onChange={handleCheckbox2Change}
-                type="checkbox"
-              />
-              <div class="checkmark"></div>
-            </label>
-
-            <label className="container">
-              <span>On Chain
-                
-              </span>
-            </label>
+          <div className="w-[50rem] text-left font-bold text-2xl mt-20">
+            2.) Select Analysis Methods
           </div>
-          <div className="">
-            <label className="container">
-              <input
-                checked={checkbox3Checked}
-                onChange={handleCheckbox3Change}
-                type="checkbox"
-              />
-              <div class="checkmark"></div>
-            </label>
 
-            <label className="container">
-              <span>Artifical Intellegence</span>
-            </label>
-          </div> */}
-          <div className="flex justify-center items-center">
+          <div className="flex flex-col gap-6 justify-center items-start mt-10">
             <div className="flex items-center">
-              <label className="container">
+              <label className="container pl-20">
                 <input
                   checked={checkbox1Checked}
                   onChange={handleCheckbox1Change}
@@ -143,13 +89,15 @@ const Airdrop = () => {
                 />
                 <div className="checkmark"></div>
               </label>
-              <label className="container">
-                <span>Karma API</span>
+              <label className="pl-10">
+                <div className="w-[10rem] text-start font-semibold text-lg">
+                  Social Analysis
+                </div>
               </label>
             </div>
 
             <div className="flex items-center">
-              <label className="container pl-4">
+              <label className="container pl-20">
                 <input
                   checked={checkbox2Checked}
                   onChange={handleCheckbox2Change}
@@ -158,13 +106,15 @@ const Airdrop = () => {
                 />
                 <div className="checkmark"></div>
               </label>
-              <label className="container">
-                <span>On Chain</span>
+              <label className="pl-10">
+                <div className="w-[10rem] text-start font-semibold text-lg">
+                  Onchain Analysis
+                </div>
               </label>
             </div>
 
             <div className="flex items-center">
-              <label className="container pl-4">
+              <label className="container pl-20">
                 <input
                   checked={checkbox3Checked}
                   onChange={handleCheckbox3Change}
@@ -173,13 +123,49 @@ const Airdrop = () => {
                 />
                 <div className="checkmark"></div>
               </label>
-              <label className="container">
-                <span className="pl-4">AI </span>
+              <label className="pl-10">
+                <div className="w-[10rem] text-start font-semibold text-lg">
+                  AI Analysis
+                </div>
               </label>
             </div>
           </div>
+          <button className="Cta mt-20 px-5 py-2 w-[15rem] justify-center bg-blue-700 rounded-lg border-2 border-blue-700 flex items-start gap-2.5">
+            <p className="text-xl font-SpaceGrotesk text-white font-semibold">
+              Analyze
+            </p>
+          </button>
+          <div className="w-[50rem] text-left font-bold text-2xl mt-20">
+            3.) Enter Token Details
+          </div>
+          <div className="flex flex-col pl-20">
+            <div className="mt-10">
+              <div className="block mb-2 text-base font-medium text-white text-left">
+                Token Address
+              </div>
+              <input
+                type="text"
+                className="bg-gray-50 w-[30rem] border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                required
+              />
+            </div>
+            <div className="mt-10">
+              <div className="block mb-2 text-base font-medium text-white text-left">
+                Airdrop Amount
+              </div>
+              <input
+                type="number"
+                className="bg-gray-50 w-[30rem] border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                required
+              />
+            </div>
+          </div>
+          <button className="Cta mt-20 px-5 py-2 w-[15rem] justify-center bg-blue-700 rounded-lg border-2 border-blue-700 flex items-start gap-2.5">
+            <p className="text-xl font-SpaceGrotesk text-white font-semibold">
+              Start Airdrop
+            </p>
+          </button>
         </div>
-        <img src="assests/hero.png" alt="hero" />
       </div>
     </>
   );
