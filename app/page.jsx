@@ -10,8 +10,8 @@ export default function Home() {
         <div className="HeroText z-[20] absolute inset-0 flex flex-col justify-center items-center text-white text-center">
           <Header />
           <p className="max-w-[1077px] opacity-80 font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl [line-height:1.2!important] font-ClashGrotesk tracking-wide">
-            Power Hyper Sybil Resistant Airdrops, right to your users social
-            feed.
+            Power Hyper Sybil Resistant Airdrops, right to social feeds of your
+            users.
           </p>
           <div className=" Subscription mt-16 flex justify-center items-center gap-4">
             <Link href="/airdrop">

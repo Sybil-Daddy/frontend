@@ -7,7 +7,10 @@ const Header = () => {
     <>
       <div className="Header ml-8 w-[1184px] pt-16  h-14 ">
         <div className="Logo w-[175px]  h-14 left-28 top-0 absolute justify-center items-center inline-flex">
-          <Link href="/" className="Logo opacity-80 text-black mt-8 text-2xl ml-5 sm:font-medium   font-normal font-SpaceGrotesk ">
+          <Link
+            href="/"
+            className="Logo opacity-80 text-black mt-8 text-2xl ml-5 sm:font-medium   font-normal font-SpaceGrotesk "
+          >
             Sybil Daddy
           </Link>
         </div>
@@ -67,7 +70,6 @@ const Header = () => {
           </svg>
         </div>
       </div>
-      
     </>
   );
 };
