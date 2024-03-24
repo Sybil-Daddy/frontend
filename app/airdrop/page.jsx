@@ -152,7 +152,7 @@ const Airdrop = () => {
                     <tbody>
                       {csvData.slice(0, 3).map((e) => {
                         return (
-                          <tr class="text-black font-semibold text-sm">
+                          <tr key={e.addressOrFid} class="text-black font-semibold text-sm">
                             <th
                               scope="row"
                               class="px-6 py-4 font-semibold whitespace-nowrap border border-solid border-black"
