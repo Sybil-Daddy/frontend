@@ -36,10 +36,10 @@ const Airdrop = () => {
           })(),
         },
         social: {
-          button: true,
+          button: checkbox1Checked,
         },
         ai: {
-          button: false,
+          button: checkbox3Checked,
         },
       };
       console.log(requestBody, "requestBody");
