@@ -6,6 +6,7 @@ import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import { abi as HubABI } from "../../abi/AirdropHub";
 import { erc20ABI, useContractRead, useContractWrite } from "wagmi";
 import { BigNumber } from "ethers";
+import axios from "axios";
 
 const Airdrop = () => {
   const hubContractAddress = "0xEa874C114D6C0C047655b0F1A2cdE04856E3CDB4";
@@ -15,6 +16,44 @@ const Airdrop = () => {
   const [checkbox1Checked, setCheckbox1Checked] = useState(false);
   const [checkbox2Checked, setCheckbox2Checked] = useState(false);
   const [checkbox3Checked, setCheckbox3Checked] = useState(false);
+  const [result, setResult] = useState([]);
+ 
+  const handleAnalyzeClick = async () => {
+    console.log("here: ",(() => {
+      return csvData.map(e => ({
+        fid: e.addressOrFid,
+        airdropInitialScore: Number(e.airdropInitialScore)
+        }))
+    })())
+    try {
+      const requestBody = {
+        data: {
+          data: (() => {
+            return csvData.map(e => ({
+              fid: e.addressOrFid,
+              airdropInitialScore: Number(e.airdropInitialScore)
+              }))
+          })(),
+        },
+        social: {
+          button: true,
+        },
+        ai: {
+          button: false,
+        },
+      };
+      console.log(requestBody, "requestBody");
+  
+      const response = await axios.post("http://localhost:8000/getanalysis", requestBody);
+  
+      console.log("Analysis data:", response.data);
+      setResult(response)
+    } catch (error) {
+      console.error("Error fetching analysis data:", error.message);
+    }
+  };
+
+  console.log(result, "result");
 
   console.log("set csv data:", csvData);
   const { write: writeCreateNewAirdrop } = useContractWrite({
@@ -157,6 +196,7 @@ const Airdrop = () => {
             <div className="flex items-center">
               <label className="container pl-20">
                 <input
+                  disabled
                   checked={checkbox2Checked}
                   onChange={handleCheckbox2Change}
                   type="checkbox"
@@ -188,7 +228,10 @@ const Airdrop = () => {
               </label>
             </div>
           </div>
-          <button className="Cta mt-20 px-5 py-2 w-[15rem] justify-center bg-blue-700 rounded-lg border-2 border-blue-700 flex items-start gap-2.5">
+          <button
+            onClick={handleAnalyzeClick}
+            className="Cta mt-20 px-5 py-2 w-[15rem] justify-center bg-blue-700 rounded-lg border-2 border-blue-700 flex items-start gap-2.5"
+          >
             <p className="text-xl font-SpaceGrotesk text-white font-semibold">
               Analyze
             </p>
