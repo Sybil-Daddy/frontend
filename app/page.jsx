@@ -6,7 +6,7 @@ import { Novatrix } from "uvcanvas";
 export default function Home() {
   return (
     <>
-      <div className="Hero w-screen h-screen relative">
+      <div className="Hero h-screen relative">
         <div className="HeroText z-[20] absolute inset-0 flex flex-col justify-center items-center text-white text-center">
           <Header />
           <p className="max-w-[1077px] opacity-80 font-bold text-gray-900 text-4xl md:text-5xl lg:text-6xl [line-height:1.2!important] font-ClashGrotesk tracking-wide">

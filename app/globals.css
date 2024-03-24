@@ -41,7 +41,8 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+  box-shadow: 0px 0px 100px rgb(1, 235, 252),
+    inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   animation: flicker 2s linear infinite;
 }
 
@@ -62,6 +63,7 @@ body {
 
 canvas {
   opacity: 0.9;
+  width: 100% !important;
 }
 
 .applyBG {
@@ -71,7 +73,8 @@ canvas {
 @keyframes flicker {
   0% {
     border: 2px solid rgb(1, 235, 252);
-    box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   }
 
   5% {
@@ -81,7 +84,8 @@ canvas {
 
   10% {
     border: 2px solid rgb(1, 235, 252);
-    box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   }
 
   25% {
@@ -91,12 +95,14 @@ canvas {
 
   30% {
     border: 2px solid rgb(1, 235, 252);
-    box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   }
 
   100% {
     border: 2px solid rgb(1, 235, 252);
-    box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   }
 }
 
@@ -135,7 +141,8 @@ canvas {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+  box-shadow: 0px 0px 100px rgb(1, 235, 252),
+    inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   animation: flicker 2s linear infinite;
 }
 
@@ -157,7 +164,8 @@ canvas {
 @keyframes flicker {
   0% {
     border: 2px solid rgb(1, 235, 252);
-    box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   }
 
   5% {
@@ -167,7 +175,8 @@ canvas {
 
   10% {
     border: 2px solid rgb(1, 235, 252);
-    box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   }
 
   25% {
@@ -177,12 +186,14 @@ canvas {
 
   30% {
     border: 2px solid rgb(1, 235, 252);
-    box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   }
 
   100% {
     border: 2px solid rgb(1, 235, 252);
-    box-shadow: 0px 0px 100px rgb(1, 235, 252) , inset 0px 0px 10px rgb(1, 235, 252),0px 0px 5px rgb(255, 255, 255);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
   }
 }
 
