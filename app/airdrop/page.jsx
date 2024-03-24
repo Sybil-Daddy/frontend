@@ -183,7 +183,7 @@ const Airdrop = () => {
             {result?.data?.length > 0 && (
               <div>
                 <h2 className="text-xl mt-4 Logo opacity-80 text-white font-bold font-SpaceGrotesk">
-                  CSV Data
+                  Revamped Score Data
                 </h2>
 
                 <div class="relative overflow-x-auto">
@@ -200,7 +200,7 @@ const Airdrop = () => {
                           scope="col"
                           className="px-6 py-3 border border-solid border-black"
                         >
-                          Score
+                          Revamped Score
                         </th>
                       </tr>
                     </thead>
@@ -218,7 +218,7 @@ const Airdrop = () => {
                               {e.fid}
                             </th>
                             <td class="px-6 py-4 border border-solid border-black">
-                              {e.airdropInitialScore}
+                              {e.revampedScore}
                             </td>
                           </tr>
                         );
